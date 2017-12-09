@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>편하다</title>
+    </head>
+
+    <script>
+        var cnt = 0;
+
+        function makeHtml(){
+            var divObj = document.getElementById("test");  
+            divObj.innerHTML = "test";  // innerHtml은 전체내용을 모두 새로변경
+
+            var str = "<table border='1'>";
+            str += "<tr>";
+            str += "<td>test</td>";
+            str += "</tr>";
+            str += "</table>";
+            divObj.innerHTML = str;  // 문자열 변수에 한번에 저장.
+        }
+
+        function gugu(){
+
+            var divObj = document.getElementById("test");  
+            divObj.innerHTML = "test";  
+
+            var strGugu = "<table border='1'>"
+            for(var i=1;i<10;i++){
+                strGugu += "<tr>"
+                for(var j=1;j<10;j++) {
+                    strGugu += "<td onclick='cl(this)'>" + i + " X " + j + " = " + (i*j) + "</td>"  // td를 말하는 this.
+                }
+                strGugu += "</tr>"
+            }
+            strGugu += "</table>"
+            divObj.innerHTML = strGugu;  // 약자라서 모두 대문자일뿐. 값을 가져올 수 있다는 것은 값을 바꿔줄 수 있다는 것.
+        }
+
+        function cl(obj) {
+            
+            var text = obj.innerHTML;
+            var idx = text.indexOf("=");
+
+            if (idx==-1) {    
+                return; // 다시 클릭하면 값이 변경되는 것을 막음.
+            }
+            cnt++;
+            text = text.substring(idx+2);
+            if (cnt == text) {
+                obj.innerHTML = "당첨"
+            } else {
+                obj.innerHTML = "꽝"
+            }
+
+            // alert(obj.innerHTML);   // td안의 내용 찍어.
+        }
+              
+            
+
+       
+    </script>
+
+    <body onload="gugu()">   <!-- on붙으면 이벤트. 렌더링하기 직전에 호출 -->
+        <div id="test"></div>
+    </body>
+</html>

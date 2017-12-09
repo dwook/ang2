@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>테스트3</title>    
+    </head>
+
+    
+
+    <body>
+        <div id="test1" data-id="tt1"></div>
+        <div id="test2" data-id="tt2"></div>
+        <div id="test3" data-id="tt3"></div>
+        <div id="test4" data-id="tt3"></div>
+        <div id="ttt" data-id="tt3"></div>
+    </body>
+
+    <script>
+           /*
+            for(var i=1; i<=3;i++) {
+                var divObj = document.getElementById("test"+i);   
+                alert(divObj.getAttribute("data-id"));
+            }
+            */
+
+            var objs = document.getElementsByTagName("div");
+            for(var i=0; i<objs.length;i++) {
+                var obj = objs[i];
+                if(obj.id.indexOf("test") != -1){
+                    str = "<input type='text' id='ip" + i + "'>";  // 가상으로 생성한 것이라 생성한 뒤에 이벤트를 걸어줘야함. 
+                    obj.innerHTML = str;
+                }
+            }
+
+            var inputObjs = document.getElementsByTagName("input");
+            for(var i=0; i<inputObjs.length;i++) {
+                var obj = document.getElementById("ip" + i);
+                obj.onclick = test;
+            }
+
+            function test() {
+                alert(1);
+            }
+            
+    </script>
+</html>
